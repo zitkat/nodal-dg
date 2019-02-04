@@ -37,7 +37,8 @@ end
 vmapP = vmapP(:); vmapM = vmapM(:);
 
 % Create list of boundary nodes
-mapB = find(vmapP==vmapM); vmapB = vmapM(mapB);
+mapB = find(vmapP==vmapM); 
+vmapB = vmapM(mapB);
 
 % Create specific left (inflow) and right (outflow) maps
 mapI = 1; mapO = K*Nfaces; vmapI = 1; vmapO = K*Np;

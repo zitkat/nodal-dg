@@ -16,7 +16,7 @@ CFL=0.75; dt   = CFL/(2*pi)*xmin; dt = .5*dt;
 Nsteps = ceil(FinalTime/dt); dt = FinalTime/Nsteps; 
 
 % advection speed
-a = 2*pi;
+a = 1;
 
 % outer time step loop 
 for tstep=1:Nsteps
@@ -24,8 +24,9 @@ for tstep=1:Nsteps
         timelocal = time + rk4c(INTRK)*dt;
         [rhsu] = AdvecRHS1D(u, timelocal, a);
         resu = rk4a(INTRK)*resu + dt*rhsu;
-        u = u+rk4b(INTRK)*resu;
+        u = u+rk4b(INTRK)*resu;    
     end;
+%     plot(x, u)
     % Increment time
     time = time+dt;
 end;
